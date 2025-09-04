@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free QR Code Generator</title>
+    <style>
+        .qr-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .qr-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .qr-container input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .qr-container button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .qr-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .qr-container #qr-code-image {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="qr-container">
+        <h2>QR Code Generator</h2>
+        <p>URL ya text daalein jiska aap QR code banana chahte hain:</p>
+        <input type="text" id="text-input" placeholder="Yahan URL ya text likhein...">
+        <button onclick="generateQRCode()">QR Code Banayein</button>
+        <div id="qr-code-image">
+        </div>
+    </div>
+
+    <script>
+        function generateQRCode() {
+            const textInput = document.getElementById('text-input').value;
+            const qrCodeImageContainer = document.getElementById('qr-code-image');
+
+            if (textInput.trim() === '') {
+                alert('Pehle kuch likhein ya URL daalein!');
+                return;
+            }
+
+            const apiURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(textInput)}`;
+            qrCodeImageContainer.innerHTML = `<img src="${apiURL}" alt="QR Code">`;
+        }
+    </script>
+</body>
+</html>
