@@ -49,10 +49,10 @@
 </head>
 <body>
     <div class="qr-container">
-       <h2>QR Code Generator</h2>
-<p>Enter the URL or text you want to make a QR code:</p>
+        <h2>QR Code Generator</h2>
+        <p>Enter the URL or text you want to make a QR code:</p>
         <input type="text" id="text-input" placeholder="Enter URL or text here...">
-       <button onclick="generateQRCode()">Generate QR Code</button>
+        <button onclick="generateQRCode()">Generate QR Code</button>
         <div id="qr-code-image">
         </div>
     </div>
@@ -61,7 +61,7 @@
             const textInput = document.getElementById('text-input').value;
             const qrCodeImageContainer = document.getElementById('qr-code-image');
             if (textInput.trim() === '') {
-                alert('Pehle kuch likhein ya URL daalein!');
+                alert('Please enter a URL or text!');
                 return;
             }
             const apiURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(textInput)}`;
@@ -73,5 +73,6 @@
     </p>
 </body>
 </html>
-
-    
+           
+          
+              
