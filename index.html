@@ -13,38 +13,59 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
-            background: linear-gradient(135deg, #f0f8ff, #e0f2f7);
+            background: #f4f7f9;
             color: #333;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-    
+
+        .hero-section {
+            background: linear-gradient(135deg, #1f2838, #2a3547);
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #b0c4de;
+        }
+
         .qr-container {
             max-width: 500px;
-            margin: 80px auto 20px auto;
+            margin: -40px auto 40px auto;
             padding: 35px;
             background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
             border: 1px solid #e0e0e0;
-            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
         }
-    
+
         .qr-container h2 {
             margin-top: 0;
             color: #2c3e50;
             font-size: 2em;
             margin-bottom: 15px;
         }
-    
+
         .qr-container p {
             color: #555;
             font-size: 1.1em;
             margin-bottom: 25px;
         }
-    
+
         .qr-container input[type="text"] {
             width: calc(100% - 24px);
             padding: 12px;
@@ -54,13 +75,13 @@
             font-size: 1em;
             transition: all 0.3s ease;
         }
-    
+
         .qr-container input[type="text"]:focus {
             border-color: #007bff;
             box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
             outline: none;
         }
-    
+
         .qr-container button {
             background-color: #007bff;
             color: white;
@@ -72,16 +93,16 @@
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
-    
+
         .qr-container button:hover {
             background-color: #0056b3;
             transform: translateY(-2px);
         }
-    
+
         .qr-container #qr-code-image {
             margin-top: 30px;
         }
-    
+
         .qr-container #qr-code-image img {
             max-width: 100%;
             height: auto;
@@ -89,7 +110,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
             border-radius: 8px;
         }
-    
+
         footer {
             text-align: center;
             margin-top: auto;
@@ -99,19 +120,19 @@
             color: #6c757d;
             font-size: 0.9em;
         }
-    
+
         footer a {
             color: #007bff;
             text-decoration: none;
             margin: 0 10px;
             transition: color 0.3s ease;
         }
-    
+
         footer a:hover {
             color: #0056b3;
             text-decoration: underline;
         }
-    
+
         /* Style for blog links in the footer */
         footer .blog-links {
             margin-top: 10px;
@@ -123,26 +144,35 @@
     </style>
 </head>
 <body>
+    <div class="hero-section">
+        <h1>Free QR Code Generator</h1>
+        <p>Create beautiful and professional QR codes in seconds.</p>
+    </div>
+
     <div class="qr-container">
-        <h2>QR Code Generator</h2>
+        <h2>Generate Your QR Code</h2>
         <p>Enter the URL or text you want to make a QR code:</p>
         <input type="text" id="text-input" placeholder="Enter URL or text here...">
         <button onclick="generateQRCode()">Generate QR Code</button>
         <div id="qr-code-image">
         </div>
     </div>
+
     <script>
         function generateQRCode() {
             const textInput = document.getElementById('text-input').value;
             const qrCodeImageContainer = document.getElementById('qr-code-image');
+
             if (textInput.trim() === '') {
                 alert('Please enter a URL or text!');
                 return;
             }
+
             const apiURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(textInput)}`;
             qrCodeImageContainer.innerHTML = `<img src="${apiURL}" alt="QR Code">`;
         }
     </script>
+    
     <footer>
         <a href="/about.html">About Us</a> | <a href="/privacy.html">Privacy Policy</a>
         <span class="blog-links">
