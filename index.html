@@ -162,12 +162,10 @@
         function generateQRCode() {
             const textInput = document.getElementById('text-input').value;
             const qrCodeImageContainer = document.getElementById('qr-code-image');
-
             if (textInput.trim() === '') {
                 alert('Please enter a URL or text!');
                 return;
             }
-
             const apiURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(textInput)}`;
             qrCodeImageContainer.innerHTML = `<img src="${apiURL}" alt="QR Code">`;
         }
